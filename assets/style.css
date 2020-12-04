@@ -1,0 +1,17 @@
+#cityReturn{
+    color: red;
+
+}
+
+#temp, #humidity, #windSpeed{
+    color: blue;
+}
+
+body{
+    font-family: 'Quicksand', sans-serif;
+    color: black;
+}
+.col-md-4 {
+    -webkit-box-shadow: -15px 9px 17px -4px #FF1F1F; 
+    box-shadow: -15px 9px 17px -4px #FF1F1F;
+    }
