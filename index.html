@@ -1,36 +1,40 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel= "stylesheet" href="/assets/style.css">
-        <title>
-            PinPoint
-        </title>
-    </head>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>City Search</title>
+  </head>
 
-<body>
-
-<h1>Welcome to PinPoint!</h1>
-
-<h2>Candidates</h2>
-
-<div class="container-1">
-    <div class="alanPic">
-        <img src="images/alanPic.jpg">
-    </div>
-    <div class= "candacePic">
-        <img src= "images/candacePic.jpg">
-    </div>
-    <div class= "jeffPic">
-        <img src= "images/jeffPic.jpg">
-    </div>
-</div>
+  <!-- Style for page -->
+  <style>
 
 
-
-</body>
-
+  </style>
 
 
+  <body>
+    <!-- Jumbotron Header for page -->
+    <header class="jumbotron" style="background-color: rgb(63, 0, 0); color: white;">
+      <h1 class="text-center">City Search</h1>
+    </header>
+    <!-- Page Container -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4" style="background-color: rgb(255, 157, 157);">
+          <h4>Enter City to Search:</h4>
+          <div class="input-group">
+            <input id="cityName" type="text" class="form-control">
+            <div>
+              <button class="btn btn-primary" id="searchBtn">Search</button>
+            </div>
+          </div>
+        </div>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="Assets/script.js"></script>
+  </body>
 </html>
