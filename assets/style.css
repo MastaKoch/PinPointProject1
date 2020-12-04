@@ -11,7 +11,7 @@ body{
     font-family: 'Quicksand', sans-serif;
     color: black;
 }
-#demo {
+.col-md-4 {
     -webkit-box-shadow: -15px 9px 17px -4px #FF1F1F; 
     box-shadow: -15px 9px 17px -4px #FF1F1F;
     }
