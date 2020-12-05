@@ -1,5 +1,20 @@
+.jumbotron{
+    background-color: grey;
+    color: blue;
+
+}
+
+
+.searchBox{
+    background-color: gray;
+    color: blue;
+    -webkit-box-shadow: -15px 9px 17px -4px #043bd4; 
+    box-shadow: -15px 9px 17px -4px #043bd4;
+}
 #cityReturn{
     color: red;
+    
+
 
 }
 
@@ -11,7 +26,3 @@ body{
     font-family: 'Quicksand', sans-serif;
     color: black;
 }
-.col-md-4 {
-    -webkit-box-shadow: -15px 9px 17px -4px #FF1F1F; 
-    box-shadow: -15px 9px 17px -4px #FF1F1F;
-    }

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Hotel Search</title>
+</head>
+
+<body>
+<label for="site-search">Search Hotel:</label>
+<input type="search" id="hotel-search" name="q" aria-label="Search through site content">
+<button id="seachBtn" onclick="searchLocation()">Search</button>
+
+
+
+<div class="city-suggestions"></div>
+<div class="landmark-suggestions"> </div>
+<div class="transport-suggestions"> </div>
+<div class="hotel-suggestions"> </div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+function searchLocation(){
+    // takes value from input  
+    var search=$("#hotel-search").val().trim();
+
+    // sets hotelSearch variable equal to the input value
+    hotelSearch= search;
+    console.log(hotelSearch);
+
+    // run functions below vvv
+    DisplaySearchSuggestion();
+}
+
+
+function DisplaySearchSuggestion(){
+
+    const settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://hotels4.p.rapidapi.com/locations/search?query="+hotelSearch+"&locale=en_US",
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "8b8ddf2d71mshf03a9aae2c1ec77p127802jsn64b1b332d9eb",
+		"x-rapidapi-host": "hotels4.p.rapidapi.com"
+	}
+};
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+    console.log(response.suggestions[0].entities.length);
+
+    //Display city suggestions  
+    var cityCount=response.suggestions[0].entities.length;
+    var listcity= "<h1>Suggestions for City Name</h1><ul>";
+
+    for (i=0; i<cityCount; i++){
+        listcity += "<li>"+ response.suggestions[0].entities[i].caption+ "</br> -Destination ID:" 
+        listcity +=response.suggestions[0].entities[i].destinationId+"</li>" ;
+    }
+    listcity += "</ul>";
+    $(".city-suggestions").html(listcity);
+
+    //Display Landmark suggestion
+    var landmarkCount=response.suggestions[1].entities.length;
+    var listlandmark= "<h1>Suggestions for Landmark</h1><ul>";
+
+    for (i=0; i<landmarkCount; i++){
+        listlandmark += "<li>"+ response.suggestions[1].entities[i].caption+ "</br> -Destination ID:" ;
+        listlandmark += response.suggestions[1].entities[i].destinationId+ "</li>" ;
+
+    }
+    listlandmark += "</ul>";
+    $(".landmark-suggestions").html(listlandmark);
+
+    //Display Transport suggestion
+    var transportCount=response.suggestions[2].entities.length;
+    var listTransport= "<h1>Suggestions for Transport</h1><ul>";
+
+    for (i=0; i<transportCount; i++){
+        listTransport += "<li>"+ response.suggestions[2].entities[i].caption+ "</br> -Destination ID:";
+        listTransport += response.suggestions[2].entities[i].destinationId+ "</li>"  ;
+
+    }
+    listTransport += "</ul>";
+    $(".transport-suggestions").html(listTransport);
+
+
+
+    //Display Hotel Suggestion
+    var hotelCount=response.suggestions[3].entities.length;
+    var listHotel= "<h1>Suggestions for Hotel</h1><ul>";
+
+    for (i=0; i<hotelCount; i++){
+        listHotel+= "<li>"+ response.suggestions[3].entities[i].caption+ "</br> -Destination ID:" ;
+        listHotel+= response.suggestions[3].entities[i].destinationId+ "</li>"
+
+    }
+    listHotel += "</ul>";
+
+    $(".hotel-suggestions").html(listHotel);
+
+
+
+
+    
+});
+}
+  </script>
+</body>
+
+</html>
+
+

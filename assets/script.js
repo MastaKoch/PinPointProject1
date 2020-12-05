@@ -47,4 +47,15 @@ function cityPresent(){
     
     //end then(function)
     });
-}
+
+    function searchLocation(){
+        // takes value from input  
+        var search=$("#hotel-search").val().trim();
+    
+        // sets hotelSearch variable equal to the input value
+        hotelSearch= search;
+        console.log(hotelSearch);
+    
+        // run functions below vvv
+        DisplaySearchSuggestion();
+    }};
