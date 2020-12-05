@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Hotel Search</title>
+  <style >
+
+
+  </style>
+</head>
+
+
+
+<body>
+  <div class="query-info"> </div>
+  <di class="result"></di>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+var destinationId = "1407168";
+var pageNumber = 1;
+var checkIn = "2020-12-08";
+var checkOut = "2020-12-15";
+var pageSize=25;
+var adults1=1;
+
+ const settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://hotels4.p.rapidapi.com/properties/list?destinationId="+destinationId+"&pageNumber="+pageNumber+"&checkIn="+checkIn+"&checkOut="+checkOut+"&pageSize="+pageSize+"&adults1="+adults1+"&currency=USD&locale=en_US&sortOrder=PRICE",
+	// "url":"https://hotels4.p.rapidapi.com/properties/list?destinationId=1506246&pageNumber=1&checkIn=2020-01-08&checkOut=2020-01-15&pageSize=25&adults1=1&currency=USD&locale=en_US&sortOrder=PRICE",
+	"method": "GET",
+	"headers": {
+	"x-rapidapi-key": "8b8ddf2d71mshf03a9aae2c1ec77p127802jsn64b1b332d9eb",
+	"x-rapidapi-host": "hotels4.p.rapidapi.com"
+	}
+};
+function getRating(obj){
+	if (obj.guestReviews){
+		return obj.guestReviews.rating; 
+	}
+	return "";
+}
+$.ajax(settings).done(function (response) {
+	console.log(response);
+	//display query value
+	var destination = response.data.body.query.destination.value;
+	$(".query-info").html("<h1>"+destination+"</h1>");
+
+	//display search result
+	var result = response.data.body.searchResults.results.length;
+	var hotelList = "<ul>"
+	for(i=0; i<pageSize; i++){
+		//var reviewRating = response.data.body.searchResults.results[i].guestReviews.rating;
+		//var reviewRaging = getRating(response.data.body.results[i]);
+		//var reviewScale = response.data.body.searchResults.results[i].guestReviews.scale;
+		//var reviewTotal = response.data.body.searchResults.results[i].guestReviews.total;
+		console.log(i);
+		var hotelName = response.data.body.searchResults.results[i].name;
+		var hotelStreetAddress = response.data.body.searchResults.results[i].address.streetAddress;
+		var pricePerNight = response.data.body.searchResults.results[i].ratePlan.price.current;
+		var totalPrice = response.data.body.searchResults.results[i].ratePlan.price.totalPricePerStay;
+		var thumbnailUrl = response.data.body.searchResults.results[i].thumbnailUrl;
+		hotelList += "<li><h2>Hotel Name: "+hotelName+"</h2></br>"
+		hotelList += "<div class='div-left'><img src='" + thumbnailUrl+"'></img></div>\
+		             </li>";
+		
+	}
+
+	$(".result").html(hotelList);
+
+
+});
+
+
+  </script>
+</body>
+
+</html>
