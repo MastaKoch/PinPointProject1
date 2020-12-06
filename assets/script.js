@@ -59,3 +59,22 @@ function cityPresent(){
         // run functions below vvv
         DisplaySearchSuggestion();
     }};
+
+    function openTab(e, tabName) {
+      
+        // hide content elements
+        var content = document.getElementsByClassName("content");
+        for (i = 0; i < content.length; i++) {
+          content[i].style.display = "none";
+        }
+      
+        // remove active class for tabHead
+        var tabHead = document.getElementsByClassName("tabHead");
+        for (i = 0; i < tabHead.length; i++) {
+          tabHead[i].className = tabHead[i].className.replace(" active", "");
+        }
+      
+        // show active tab content contents
+        document.getElementById(tabName).style.display = "block";
+        e.currentTarget.tabName += " active";
+      }

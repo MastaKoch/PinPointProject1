@@ -17,8 +17,13 @@
       <h1 class="text-center">PinPoint</h1>
     </header>
     <!-- Page Container -->
-    <div class="container">
-      <div class="row">
+
+    <div id="tabGroup">
+      <button class="tabHead" onclick="openTab(event, 'weather')">Weather</button>
+      <button class="tabHead" onclick="openTab(event, 'Hotel')">Hotel</button>
+    </div>
+
+    <div class="content" id="weather">
         <div class="searchBox">
           <h4>City Name:</h4>
           <div class="input-group">
@@ -40,8 +45,7 @@
         </div>
       </div>
     </div>  
-  </div> 
-  
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="Assets/script.js"></script>

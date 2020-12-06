@@ -26,3 +26,22 @@ body{
     font-family: 'Quicksand', sans-serif;
     color: black;
 }
+
+.content {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+#tabGroup button {
+    /* display: block; */
+    width: 48%; 
+    background-color: Gray;
+    float: justify;
+    border: 5 px;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 40px;
+}
