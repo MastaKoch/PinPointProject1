@@ -5,36 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/style.css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <title>City Search</title>
   </head>
 
-  <!-- Style for page -->
-  <style>
-
-
-  </style>
-
-
   <body>
     <!-- Jumbotron Header for page -->
-    <header class="jumbotron" style="background-color: rgb(63, 0, 0); color: white;">
-      <h1 class="text-center">City Search</h1>
+    <header class="jumbotron">
+      <h1 class="text-center">PinPoint</h1>
     </header>
-    <!-- Page Container -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4" style="background-color: rgb(255, 157, 157);">
-          <h4>Enter City to Search:</h4>
+    <!-- Tab groups -->
+    <!-- Tab group for weather -->
+    <div id="tabGroup">
+      <button class="tabHead" onclick="openTab(event, 'weather')">Weather</button>
+      <button class="tabHead" onclick="openTab(event, 'Hotel')">Hotel</button>
+    </div>
+
+    <div class="content" id="weather">
+        <div class="searchBox">
+          <h4>City Name:</h4>
           <div class="input-group">
             <input id="cityName" type="text" class="form-control">
             <div>
-              <button class="btn btn-primary" id="searchBtn">Search</button>
+              <button class="btn btn-primary" id="searchBtn">Go!</button>
             </div>
           </div>
         </div>
+
+    <!--TODO work on how to return this data "pretty" -->
+      <div class="col-md-8">
+        <div class="row ml-4 border border-dark rounded">
+          <div class="p-3" id="weatherInfo">
+            <h2><span id="cityReturn"></span></h2>
+            <p><span id="temp"></span></p>
+            <p><span id="humidity"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>  
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="Assets/script.js"></script>
   </body>
 </html>
+
+
+        <!-- Current city weather info box -->
+        

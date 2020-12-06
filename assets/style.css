@@ -1,0 +1,47 @@
+.jumbotron{
+    background-color: grey;
+    color: blue;
+
+}
+
+
+.searchBox{
+    background-color: gray;
+    color: blue;
+    -webkit-box-shadow: -15px 9px 17px -4px #043bd4; 
+    box-shadow: -15px 9px 17px -4px #043bd4;
+}
+#cityReturn{
+    color: red;
+    
+
+
+}
+
+#temp, #humidity, #windSpeed{
+    color: blue;
+}
+
+body{
+    font-family: 'Quicksand', sans-serif;
+    color: black;
+}
+
+.content {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+#tabGroup button {
+    /* display: block; */
+    width: 48%; 
+    background-color: Gray;
+    float: justify;
+    border: 5 px;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 40px;
+}
