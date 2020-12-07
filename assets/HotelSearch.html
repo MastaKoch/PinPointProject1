@@ -35,13 +35,15 @@ var adults1=1;
 	"x-rapidapi-key": "8b8ddf2d71mshf03a9aae2c1ec77p127802jsn64b1b332d9eb",
 	"x-rapidapi-host": "hotels4.p.rapidapi.com"
 	}
+
 };
-function getRating(obj){
-	if (obj.guestReviews){
-		return obj.guestReviews.rating; 
-	}
-	return "";
-}
+
+// function getRating(obj){
+// 	if (obj.guestReviews){
+// 		return obj.guestReviews.rating; 
+// 	}
+// 	return "";
+// }
 $.ajax(settings).done(function (response) {
 	console.log(response);
 	//display query value

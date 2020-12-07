@@ -16,42 +16,49 @@
     <header class="jumbotron">
       <h1 class="text-center">PinPoint</h1>
     </header>
+    <div class="searchBox">
+      <h4>City Name:</h4>
+      <div class="input-group">
+        <input id="cityName" type="text" class="form-control">
+        <div>
+          <button class="btn btn-primary" id="searchBtn">Go!</button>
+        </div>
+      </div>
+    </div>
     <!-- Tab groups -->
     <!-- Tab group for weather -->
     <div id="tabGroup">
       <button class="tabHead" onclick="openTab(event, 'weather')">Weather</button>
-      <button class="tabHead" onclick="openTab(event, 'Hotel')">Hotel</button>
+      <button class="tabHead" onclick="openTab(event, 'hotel')">Hotel</button>
     </div>
 
     <div class="content" id="weather">
-        <div class="searchBox">
-          <h4>City Name:</h4>
-          <div class="input-group">
-            <input id="cityName" type="text" class="form-control">
-            <div>
-              <button class="btn btn-primary" id="searchBtn">Go!</button>
-            </div>
-          </div>
-        </div>
-
-    <!--TODO work on how to return this data "pretty" -->
       <div class="col-md-8">
         <div class="row ml-4 border border-dark rounded">
           <div class="p-3" id="weatherInfo">
             <h2><span id="cityReturn"></span></h2>
+            <p><span id=cityId></span></p>
             <p><span id="temp"></span></p>
             <p><span id="humidity"></span></p>
           </div>
         </div>
       </div>
-    </div>  
+    </div> 
+    
+    <div class="content" id="hotel">
+      <div class="col-md-8">
+        <div class="row ml-4 border border-dark rounded">
+          <div class="p-3" id="hotelInfo">
+            <h2><span>I CAN SEE YOU</span></h2>
+            <div class="query-info"> </div>
+            <di class="result"></di>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="Assets/script.js"></script>
   </body>
 </html>
-
-
-        <!-- Current city weather info box -->
-        
