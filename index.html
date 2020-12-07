@@ -15,6 +15,7 @@
     <!-- Jumbotron Header for page -->
     <header class="jumbotron">
       <h1 class="text-center">PinPoint</h1>
+      <img src="images/pinpoint.jpg" class="ppImage">
     </header>
     <div class="searchBox">
       <h4>City Name:</h4>
@@ -28,13 +29,15 @@
     <!-- Tab groups -->
     <!-- Tab group for weather -->
     <div id="tabGroup">
-      <button class="tabHead" onclick="openTab(event, 'weather')">Weather</button>
-      <button class="tabHead" onclick="openTab(event, 'hotel')">Hotel</button>
+      <button class="weatherBtn" onclick="openTab(event, 'weather')">Weather</button>
+      <img class="weatherIcon" src="images/weather.jpg">
+      <button class="hotelBtn" onclick="openTab(event, 'Hotel')">Hotel</button>
+      <img class="hotelIcon" src="images/hotel.jpg">
     </div>
 
     <div class="content" id="weather">
       <div class="col-md-8">
-        <div class="row ml-4 border border-dark rounded">
+        <div class="resultsBox">
           <div class="p-3" id="weatherInfo">
             <h2><span id="cityReturn"></span></h2>
             <p><span id=cityId></span></p>

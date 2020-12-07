@@ -1,9 +1,21 @@
 .jumbotron{
     background-color: grey;
     color: blue;
+    align-content: center;
+    text-align: center;
 
 }
 
+.ppImage{
+    width: 15rem;
+    height: 15rem;
+
+}
+
+.weatherIcon, .hotelIcon{
+    width: 5rem;
+    height: 5rem;
+}
 
 .searchBox{
     background-color: gray;
@@ -44,4 +56,5 @@ body{
     padding: 14px 16px;
     transition: 0.3s;
     font-size: 40px;
+    align-content: center;
 }
