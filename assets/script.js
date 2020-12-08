@@ -89,13 +89,13 @@ function getCityId(){
 
 
 function hotelPresent(){
-  var destId = sessionStorage.getItem("cityId");
-  // var destId = "1528090";
+  // var destId = sessionStorage.getItem("cityId");
+  var destId = "1528090";
   // console.log(cityId);
   var pageNumber = 1;
 var checkIn = "2020-12-08";
 var checkOut = "2020-12-15";
-var pageSize=25;
+var pageSize=5;
 var adults1=1;
 
  const settings = {
@@ -121,7 +121,7 @@ $.ajax(settings).done(function (response) {
 	console.log(response);
 	//display query value
 	var destination = response.data.body.query.destination.value;
-	$(".query-info").html("<h1>"+destination+"</h1>");
+	$("#query-info").html("<h1>"+destination+"</h1>");
 
 	//display search result
 	var result = response.data.body.searchResults.results.length;
@@ -137,13 +137,14 @@ $.ajax(settings).done(function (response) {
 		var pricePerNight = response.data.body.searchResults.results[i].ratePlan.price.current;
 		var totalPrice = response.data.body.searchResults.results[i].ratePlan.price.totalPricePerStay;
 		var thumbnailUrl = response.data.body.searchResults.results[i].thumbnailUrl;
-		hotelList += "<li><h2>Hotel Name: "+hotelName+"</h2></br>"
+		hotelList += "<li><h2>Hotel Name: "+hotelName+"</h2></br>";
 		hotelList += "<div class='div-left'><img src='" + thumbnailUrl+"'></img></div>\
-		             </li>";
+                 </li>";
+    hotelList += "<div><p>"+ hotelStreetAddress + "</p></div>";
 		
 	}
 
-	$(".result").html(hotelList);
+	$("#result").html(hotelList);
 
 
 });

@@ -55,3 +55,15 @@ body{
     font-size: 40px;
     align-content: center;
 }
+
+.div-left{
+    background-color: lightblue;
+}
+
+#hotel img{
+    size: 150%;
+}
+
+.hotelInfo{
+    background-color: pink;
+}
