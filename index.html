@@ -20,7 +20,7 @@
     <div class="searchBox">
       <h4>City Name:</h4>
       <div class="input-group">
-        <input id="cityName" type="text" class="form-control">
+        <input id="cityName" type="text" class="searchInput">
         <div>
           <button class="btn btn-primary" id="searchBtn">Go!</button>
         </div>
@@ -28,20 +28,22 @@
     </div>
     <!-- Tab groups -->
     <!-- Tab group for weather -->
-    <div id="tabGroup">
+    <div class="tabGroup">
       <button class="weatherBtn" onclick="openTab(event, 'weather')">Weather<img class="weatherIcon" src="images/weather.jpg"></button>
       <button class="hotelBtn" onclick="openTab(event, 'hotel')">Hotel<img class="hotelIcon" src="images/hotel.jpg"></button>
     </div>
 
     <div class="content" id="weather">
-      <h2><span id="cityReturn"></span></h2>
+      <p class="cityHeader"><a id="weatherCity"></a></p>
+      <p class="weatherInfo"><a id="weatherReturn"></a></p>
+      <!-- <h2><span id="cityReturn"></span></h2>
       <p><span id="temp"></span></p>
-      <p><span id="humidity"></span></p>
+      <p><span id="humidity"></span></p> -->
     </div> 
     
     <div class="content" id="hotel">
-      <p class="cityHeader"><a id="query-info"></a></p>
-      <p class="hotelInfo"><a id="result"></a></p>
+      <p class="cityHeader"><a id="hotelCity"></a></p>
+      <p class="hotelInfo"><a id="hotelReturn"></a></p>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

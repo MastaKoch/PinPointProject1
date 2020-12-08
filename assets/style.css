@@ -3,13 +3,11 @@
     color: blue;
     align-content: center;
     text-align: center;
-
 }
 
 .ppImage{
     width: 15rem;
     height: 15rem;
-
 }
 
 .weatherIcon, .hotelIcon{
@@ -18,17 +16,20 @@
 }
 
 .searchBox{
+    display: block;
     background-color: gray;
     color: blue;
     -webkit-box-shadow: -15px 9px 17px -4px #043bd4; 
     box-shadow: -15px 9px 17px -4px #043bd4;
-    margin: 15px;
+    margin: auto;
+    width: 25%;
+    padding: 15px;
 }
-#cityReturn{
+.cityHeader{
     color: red;
 }
 
-#temp, #humidity, #windSpeed{
+.weatherInfo{
     color: blue;
 }
 
@@ -44,26 +45,42 @@ body{
     border-top: none;
 }
 
-#tabGroup button {
-    width: 48%; 
+.tabGroup button {
+    width: 40%; 
     background-color: Gray;
-    float: justify;
-    border: 5 px;
     cursor: pointer;
-    padding: 14px 16px;
+    padding: 14px;
     transition: 0.3s;
     font-size: 40px;
     align-content: center;
+    margin: 0px 5px;
+
+}
+.tabGroup {
+    margin: 20px;
+    display: flex;  
+    justify-content: center;  
+    align-items: center;  
 }
 
 .div-left{
-    background-color: lightblue;
+    background-color: rgb(100, 151, 153);
+    display: inline-block;
+    width: 75%;
 }
 
-#hotel img{
-    size: 150%;
-}
 
 .hotelInfo{
-    background-color: pink;
+    background-color: rgb(165, 151, 153);
+    display: inline-block;
+    width: 100%;
+}
+
+#address {
+    float: left;
+    font-size: 30px;
+}
+
+#hotelReturn img{
+    float: left;
 }
