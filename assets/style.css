@@ -22,11 +22,27 @@
     -webkit-box-shadow: -15px 9px 17px -4px #043bd4; 
     box-shadow: -15px 9px 17px -4px #043bd4;
     margin: auto;
-    width: 25%;
+    width: 30%;
     padding: 15px;
 }
 .cityHeader{
     color: red;
+}
+
+/* header for page "PinPoint" */
+h1{
+    font-size: 60px;
+}
+
+/* City name header inside of tabs */
+h2{
+    font-size: 40px;
+}
+
+/* Hotel names */
+h3{
+    text-decoration: underline;
+    font-size: 30px;
 }
 
 .weatherInfo{
@@ -41,8 +57,12 @@ body{
 .content {
     display: none;
     padding: 6px 12px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     border-top: none;
+    justify-content: center;  
+    align-items: center;
+    margin: auto;
+    width: 79%; 
 }
 
 .tabGroup button {
@@ -74,13 +94,22 @@ body{
     background-color: rgb(165, 151, 153);
     display: inline-block;
     width: 100%;
+    padding: 15px;
 }
 
+/* hotel address */
 #address {
     float: left;
-    font-size: 30px;
+    font-size: 25px;
+    margin: 35px;
 }
 
+/* hotel images */
 #hotelReturn img{
     float: left;
+}
+
+
+.searchInput {
+    width: 350px;
 }

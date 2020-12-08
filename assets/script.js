@@ -55,7 +55,7 @@ function weatherPresent(){
 
     var temperature=response.main.temp;
     var humidity=response.main.humidity;
-    $("#weatherCity").html("<h1>"+citySearch+"</h1>");
+    $("#weatherCity").html("<h2>"+citySearch+"</h2>");
 
     var weatherData = "<ul>"
     weatherData += "<p>Temperature: "+temperature+"</p>";
@@ -125,11 +125,11 @@ function hotelPresent(){
     // var destination = response.data.body.query.destination.value;
 
     // write data back to html
-    $("#hotelCity").html("<h1>"+citySearch+"</h1>");
+    $("#hotelCity").html("<h2>"+citySearch+"</h2>");
 
     //display search result
     var result = response.data.body.searchResults.results.length;
-    var hotelList = "<ul>"
+    var hotelList = "<dl>"
     for(i=0; i<pageSize; i++){
       //var reviewRating = response.data.body.searchResults.results[i].guestReviews.rating;
       //var reviewRaging = getRating(response.data.body.results[i]);
@@ -144,9 +144,9 @@ function hotelPresent(){
       var pricePerNight = response.data.body.searchResults.results[i].ratePlan.price.current;
       var totalPrice = response.data.body.searchResults.results[i].ratePlan.price.totalPricePerStay;
       var thumbnailUrl = response.data.body.searchResults.results[i].thumbnailUrl;
-      hotelList += "<li><h2>Hotel Name: "+hotelName+"</h2></br>";
+      hotelList += "<dt><h3>Hotel Name: "+hotelName+"</h3></br>";
       hotelList += "<div class='div-left'><img src='" + thumbnailUrl+"'></img>"
-      hotelList += "<p id='address'>"+ hotelStreetAddress + "<br>" +hotelLocality+", "+hotelRegion+" "+hotelPostalCode+"</p></div></li>";
+      hotelList += "<p id='address'>"+ hotelStreetAddress + "<br>" +hotelLocality+", "+hotelRegion+" "+hotelPostalCode+"</p></div></dt>";
       
     }
     // write data back to html
