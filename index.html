@@ -30,7 +30,7 @@
     <!-- Tab group for weather -->
     <div id="tabGroup">
       <button class="weatherBtn" onclick="openTab(event, 'weather')">Weather<img class="weatherIcon" src="images/weather.jpg"></button>
-      <button class="hotelBtn" onclick="openTab(event, 'Hotel')">Hotel<img class="hotelIcon" src="images/hotel.jpg"></button>
+      <button class="hotelBtn" onclick="openTab(event, 'hotel')">Hotel<img class="hotelIcon" src="images/hotel.jpg"></button>
     </div>
 
     <div class="content" id="weather">
@@ -38,7 +38,6 @@
         <div class="resultsBox">
           <div class="p-3" id="weatherInfo">
             <h2><span id="cityReturn"></span></h2>
-            <p><span id=cityId></span></p>
             <p><span id="temp"></span></p>
             <p><span id="humidity"></span></p>
           </div>
@@ -48,10 +47,9 @@
     
     <div class="content" id="hotel">
       <div class="col-md-8">
-        <div class="row ml-4 border border-dark rounded">
+        <div class="resultsBox">
           <div class="p-3" id="hotelInfo">
-            <h2><span>I CAN SEE YOU</span></h2>
-            <div class="query-info"> </div>
+            <div class="query-info"></div>
             <di class="result"></di>
           </div>
         </div>

@@ -22,12 +22,10 @@
     color: blue;
     -webkit-box-shadow: -15px 9px 17px -4px #043bd4; 
     box-shadow: -15px 9px 17px -4px #043bd4;
+    margin: 15px;
 }
 #cityReturn{
     color: red;
-    
-
-
 }
 
 #temp, #humidity, #windSpeed{
@@ -47,7 +45,6 @@ body{
 }
 
 #tabGroup button {
-    /* display: block; */
     width: 48%; 
     background-color: Gray;
     float: justify;
