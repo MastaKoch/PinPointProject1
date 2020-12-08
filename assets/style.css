@@ -1,5 +1,5 @@
 .jumbotron{
-    background-color: grey;
+    background-color: rgb(189, 65, 65);
     color: blue;
     align-content: center;
     text-align: center;
@@ -10,14 +10,19 @@
     height: 15rem;
 }
 
-.weatherIcon, .hotelIcon{
+.weatherIcon{
     width: 5rem;
     height: 5rem;
 }
+.hotelIcon{
+    width: 10rem;
+    height: 5rem;
+}
+
 
 .searchBox{
     display: block;
-    background-color: gray;
+    background-color: rgb(90, 151, 93);
     color: blue;
     -webkit-box-shadow: -15px 9px 17px -4px #043bd4; 
     box-shadow: -15px 9px 17px -4px #043bd4;
@@ -74,6 +79,7 @@ body{
     font-size: 40px;
     align-content: center;
     margin: 0px 5px;
+    background-color: lightblue;
 
 }
 .tabGroup {
