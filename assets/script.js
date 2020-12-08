@@ -54,9 +54,14 @@ function weatherPresent(){
     
     var temperature= $("<p>").text("Temperature: "+response.main.temp+"F");
     var humidity = $("<p>").text("Humidity: "+response.main.humidity);
-    $("#temp").append(temperature)
-    $("#humidity").append(humidity)
-    $("#cityReturn").append(citySearch)
+    $("#cityReturn").empty();
+    $("#temp").empty();
+    $("#humidity").empty();
+
+    $("#cityReturn").append(citySearch);
+    $("#temp").append(temperature);
+    $("#humidity").append(humidity);
+    
   });
 }
 
