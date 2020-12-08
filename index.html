@@ -11,7 +11,7 @@
     <title>City Search</title>
   </head>
 
-  <body>
+  <body>  
     <!-- Jumbotron Header for page -->
     <header class="jumbotron">
       <h1 class="text-center">PinPoint</h1>
@@ -29,18 +29,19 @@
     <!-- Tab groups -->
     <!-- Tab group for weather -->
     <div id="tabGroup">
-      <button class="weatherBtn" onclick="openTab(event, 'weather')">Weather<img class="weatherIcon" src="images/weather.jpg"></button>
-      <button class="hotelBtn" onclick="openTab(event, 'hotel')">Hotel<img class="hotelIcon" src="images/hotel.jpg"></button>
+      <button class="appOption" id="weatherBtn" onclick="openTab(event, 'weather')">Weather<img class="weatherIcon" src="images/weather.jpg"></button>
+      <button class="appOption" id="hotelBtn" onclick="openTab(event, 'hotel')">Hotel<img class="hotelIcon" src="images/hotel.jpg"></button>
     </div>
 
     <div class="content" id="weather">
       <h2><span id="cityReturn"></span></h2>
-      <p><span id="temp"></span></p>
+      <p><span id="temp">test test test</span></p>
       <p><span id="humidity"></span></p>
     </div> 
     
     <div class="content" id="hotel">
-      <p class="cityHeader"><a id="query-info"></a></p>
+      <h2>Hotel info</h2>
+      <p class="cityHeader">test test test test<a id="query-info"></a></p>
       <p class="hotelInfo"><a id="result"></a></p>
     </div>
 

@@ -12,9 +12,9 @@ function openTab(showTab, tabName) {
   }
 
   // remove active class for all "tabHead" classes
-  var tabHead = document.getElementsByClassName("tabHead");
-  for (i = 0; i < tabHead.length; i++) {
-    tabHead[i].className = tabHead[i].className.replace(" active", "");
+  var appOption = document.getElementsByClassName("appOption");
+  for (i = 0; i < appOption.length; i++) {
+    appOption[i].className = appOption[i].className.replace(" active", "");
   }
 
   // show active tab content
