@@ -1,21 +1,31 @@
 .jumbotron{
     background-color: grey;
     color: blue;
+    align-content: center;
+    text-align: center;
 
 }
 
+.ppImage{
+    width: 15rem;
+    height: 15rem;
+
+}
+
+.weatherIcon, .hotelIcon{
+    width: 5rem;
+    height: 5rem;
+}
 
 .searchBox{
     background-color: gray;
     color: blue;
     -webkit-box-shadow: -15px 9px 17px -4px #043bd4; 
     box-shadow: -15px 9px 17px -4px #043bd4;
+    margin: 15px;
 }
 #cityReturn{
     color: red;
-    
-
-
 }
 
 #temp, #humidity, #windSpeed{
@@ -35,7 +45,6 @@ body{
 }
 
 #tabGroup button {
-    /* display: block; */
     width: 48%; 
     background-color: Gray;
     float: justify;
@@ -44,4 +53,17 @@ body{
     padding: 14px 16px;
     transition: 0.3s;
     font-size: 40px;
+    align-content: center;
+}
+
+.div-left{
+    background-color: lightblue;
+}
+
+#hotel img{
+    size: 150%;
+}
+
+.hotelInfo{
+    background-color: pink;
 }
