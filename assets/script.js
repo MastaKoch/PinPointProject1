@@ -40,7 +40,7 @@ $("#searchBtn").on("click", function(event){
   weatherPresent();
   hotelPresent(getCityId());
 });
-
+// end OnClick function
 
 // weatherPresent function.. shows the weather forecast at the present moment.
 function weatherPresent(){
@@ -55,15 +55,17 @@ function weatherPresent(){
 
     var temperature=response.main.temp;
     var humidity=response.main.humidity;
+    // Write City Name to weather header
     $("#weatherCity").html("<h2>"+citySearch+"</h2>");
-
+    // Write weather data to html
     var weatherData = "<ul>"
-    weatherData += "<p>Temperature: "+temperature+"</p>";
-    weatherData += "<p>Humidity: "+humidity+"</p>";
+    weatherData += "<p>Temperature: "+temperature+" F</p>";
+    weatherData += "<p>Humidity: "+humidity+" %</p>";
     $("#weatherReturn").html(weatherData);
     
   });
 }
+//end WeatherPresent function
 
 
 // Hotel data API
@@ -92,6 +94,7 @@ function getCityId(){
     console.log(cityId);
   });
 }
+// End getCityId function
 
 // function to return hotel data
 function hotelPresent(){
@@ -124,12 +127,12 @@ function hotelPresent(){
     //display query value
     // var destination = response.data.body.query.destination.value;
 
-    // write data back to html
+    // write hotel city name to hotel header in html
     $("#hotelCity").html("<h2>"+citySearch+"</h2>");
 
-    //display search result
-    var result = response.data.body.searchResults.results.length;
+    // Write hotel data back to hotel tab of html
     var hotelList = "<dl>"
+
     for(i=0; i<pageSize; i++){
       //var reviewRating = response.data.body.searchResults.results[i].guestReviews.rating;
       //var reviewRaging = getRating(response.data.body.results[i]);
@@ -154,3 +157,4 @@ function hotelPresent(){
 
   });
 }
+// end hotelPresent
