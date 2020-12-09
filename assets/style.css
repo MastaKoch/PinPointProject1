@@ -106,12 +106,13 @@ body{
     background-color: rgb(100, 151, 153);
     display: block;
     width: 75%;
-    height: 150px;
+    height: fit-content;
 }
 
 
 .SearchHotelResult{
     background-color: rgb(165, 151, 153);
+    display:none;
     width: 100%;
     padding: 15px;
 }
@@ -126,9 +127,8 @@ body{
 /* hotel images */
 .SearchHotelResult img{
     float:left;
-    display:inline;
-    align-items: left;
-    margin: 3px 20px 3px 3px;
+    margin-right: 20px;
+    margin-bottom: 20px;
 }
 
 .searchInput {
@@ -136,5 +136,9 @@ body{
 }
 
 dt {
-    margin:15px;
+    margin:inherit;
+}
+
+#hotel input {
+    width: 350px;
 }

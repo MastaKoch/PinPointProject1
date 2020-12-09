@@ -48,6 +48,7 @@ $("#searchBtn").on("click", function(event){
 $("#searchHotelBtn").on("click", function(event){
   event.preventDefault();
 
+  $(".SearchHotelResult").show();
   // takes value from input id #HotelCityName 
   var searchHotel = $("#HotelCityName").val().trim();
   console.log(searchHotel);
