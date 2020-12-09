@@ -12,9 +12,9 @@ function openTab(showTab, tabName) {
   }
 
   // remove active class for all "tabHead" classes
-  var tabHead = document.getElementsByClassName("tabHead");
-  for (i = 0; i < tabHead.length; i++) {
-    tabHead[i].className = tabHead[i].className.replace(" active", "");
+  var appOption = document.getElementsByClassName("appOption");
+  for (i = 0; i < appOption.length; i++) {
+    appOption[i].className = appOption[i].className.replace(" active", "");
   }
 
   // show active tab content
@@ -38,11 +38,121 @@ $("#searchBtn").on("click", function(event){
 
 // run functions below vvv
   weatherPresent();
-  hotelPresent(getCityId());
 });
 // end OnClick function
 
-// weatherPresent function.. shows the weather forecast at the present moment.
+
+// onClick function for the Hotel search button. 
+$("#searchHotelBtn").on("click", function(event){
+  event.preventDefault();
+
+  // takes value from input id #HotelCityName 
+  var searchHotel = $("#HotelCityName").val().trim();
+  console.log(searchHotel);
+
+  // takes value from input id #CheckinDate 
+  var CheckinDate = $("#CheckinDate").val().trim();
+  console.log(CheckinDate);
+
+  // takes value from input id #CheckOutDate 
+  var CheckOutDate = $("#CheckOutDate").val().trim();
+  console.log(CheckOutDate);
+
+   // takes value from input id #NumberOfTravelers 
+   var NumberOfTravelers = $("#NumberOfTravelers").val().trim();
+   console.log(NumberOfTravelers);
+
+// run functions below 
+  GetDestinationID(searchHotel, CheckinDate, CheckOutDate, NumberOfTravelers );
+  
+});
+
+
+
+
+function GetDestinationID(searchHotel, CheckinDate, CheckOutDate, NumberOfTravelers){
+
+const settings = {
+"async": true,
+"crossDomain": true,
+"url": "https://hotels4.p.rapidapi.com/locations/search?query="+searchHotel+"&locale=en_US",
+"method": "GET",
+"headers": {
+  "x-rapidapi-key": "8b8ddf2d71mshf03a9aae2c1ec77p127802jsn64b1b332d9eb",
+  "x-rapidapi-host": "hotels4.p.rapidapi.com"
+}
+};
+
+$.ajax(settings).done(function (response) {
+  var cityId= response.suggestions[0].entities[0].destinationId;
+  console.log(cityId);
+  console.log(response);
+
+  pageNumber = 1;
+  pageSize = 25;
+
+  getHotelList(cityId, CheckinDate, CheckOutDate, NumberOfTravelers, pageNumber, pageSize);
+
+
+});
+}
+
+
+function getHotelList(CityId, checkIn, checkOut, adults1, pageNumber, pageSize) {
+
+
+ const settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://hotels4.p.rapidapi.com/properties/list?destinationId="+CityId+"&pageNumber="+pageNumber+"&checkIn="+checkIn+"&checkOut="+checkOut+"&pageSize="+pageSize+"&adults1="+adults1+"&currency=USD&locale=en_US&sortOrder=PRICE",
+	// "url":"https://hotels4.p.rapidapi.com/properties/list?destinationId=1506246&pageNumber=1&checkIn=2020-01-08&checkOut=2020-01-15&pageSize=25&adults1=1&currency=USD&locale=en_US&sortOrder=PRICE",
+	"method": "GET",
+	"headers": {
+	"x-rapidapi-key": "8b8ddf2d71mshf03a9aae2c1ec77p127802jsn64b1b332d9eb",
+	"x-rapidapi-host": "hotels4.p.rapidapi.com"
+	}
+
+};
+
+// function getRating(obj){
+// 	if (obj.guestReviews){
+// 		return obj.guestReviews.rating; 
+// 	}
+// 	return "";
+// }
+$.ajax(settings).done(function (response) {
+	console.log(response);
+	//display query value
+	var destination = response.data.body.query.destination.value;
+	$(".query-info").html("<h1>"+destination+"</h1>");
+
+	//display search result
+	var result = response.data.body.searchResults.results.length;
+	var hotelList = "<ul>"
+	for(i=0; i<pageSize; i++){
+		//var reviewRating = response.data.body.searchResults.results[i].guestReviews.rating;
+		//var reviewRaging = getRating(response.data.body.results[i]);
+		//var reviewScale = response.data.body.searchResults.results[i].guestReviews.scale;
+		//var reviewTotal = response.data.body.searchResults.results[i].guestReviews.total;
+		console.log(i);
+		var hotelName = response.data.body.searchResults.results[i].name;
+		//var hotelStreetAddress = response.data.body.searchResults.results[i].address.streetAddress;
+		//var pricePerNight = response.data.body.searchResults.results[i].ratePlan.price.current;
+		//var totalPrice = response.data.body.searchResults.results[i].ratePlan.price.totalPricePerStay;
+		var thumbnailUrl = response.data.body.searchResults.results[i].thumbnailUrl;
+		hotelList += "<li><h2>Hotel Name: "+hotelName+"</h2></br>"
+		hotelList += "<div class='div-left'><img src='" + thumbnailUrl+"'></img></div>\
+		             </li>";
+		
+	}
+
+	$(".SearchHotelResult").html(hotelList);
+
+
+});
+
+}
+
 function weatherPresent(){
 
   const weatherSettings = {
@@ -52,6 +162,19 @@ function weatherPresent(){
     
   $.ajax(weatherSettings).done(function (response) {
     console.log(response);
+
+    
+    var temperature= $("<p>").text("Temperature: "+response.main.temp+"F");
+    var humidity = $("<p>").text("Humidity: "+response.main.humidity);
+    $("#cityReturn").empty();
+    $("#temp").empty();
+    $("#humidity").empty();
+
+    $("#cityReturn").append(citySearch);
+    $("#temp").append(temperature);
+    $("#humidity").append(humidity);
+
+
 
     var temperature=response.main.temp;
     var humidity=response.main.humidity;
@@ -63,6 +186,7 @@ function weatherPresent(){
     weatherData += "<p>Humidity: "+humidity+" %</p>";
     $("#weatherReturn").html(weatherData);
     
+
   });
 }
 //end WeatherPresent function
