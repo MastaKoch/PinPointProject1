@@ -28,9 +28,6 @@
 
     <!-- Tab group for weather -->
     <div class="content" id="weather">
-      <h2><span id="cityReturn"></span></h2>
-      <p><span id="temp">test test test</span></p>
-      <p><span id="humidity"></span></p>
       <div class="searchBox">
         <h4>City Name:</h4>
         <div class="input-group">
@@ -47,6 +44,7 @@
     <!-- Tab group for Hotel -->
     
     <div class="content" id="hotel">
+      <p class="cityHeader"><a id="hotelCity"></a></p>
       <div>
       <label for="HotelCityName">City:</label>
       <input id="HotelCityName" type="text" class="form-control">
@@ -62,17 +60,10 @@
       <div>
         <label for="NumberOfTravelers">Number of Travelers:</label>
         <input id="NumberOfTravelers" type="text" class="form-control"> </br>
-
+        <button class="btn btn-primary" id="searchHotelBtn">Go!</button>
         <div class="SearchHotelResult"> </div>
       </div>
-  
-  
 
-        <button class="btn btn-primary" id="searchHotelBtn">Go!</button>
-        
-
-      <p class="cityHeader"><a id="hotelCity"></a></p>
-      <p class="hotelInfo"><a id="hotelReturn"></a></p>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

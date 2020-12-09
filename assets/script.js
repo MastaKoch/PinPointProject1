@@ -124,7 +124,7 @@ $.ajax(settings).done(function (response) {
 	console.log(response);
 	//display query value
 	var destination = response.data.body.query.destination.value;
-	$(".query-info").html("<h1>"+destination+"</h1>");
+	$("#hotelCity").html("<h2>"+destination+"</h2>");
 
 	//display search result
 	var result = response.data.body.searchResults.results.length;
@@ -140,7 +140,7 @@ $.ajax(settings).done(function (response) {
 		//var pricePerNight = response.data.body.searchResults.results[i].ratePlan.price.current;
 		//var totalPrice = response.data.body.searchResults.results[i].ratePlan.price.totalPricePerStay;
 		var thumbnailUrl = response.data.body.searchResults.results[i].thumbnailUrl;
-		hotelList += "<li><h2>Hotel Name: "+hotelName+"</h2></br>"
+		hotelList += "<li><h3>Hotel Name: "+hotelName+"</h3></br>"
 		hotelList += "<div class='div-left'><img src='" + thumbnailUrl+"'></img></div>\
 		             </li>";
 		
