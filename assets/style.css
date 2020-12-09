@@ -47,7 +47,10 @@ h2{
 /* Hotel names */
 h3{
     text-decoration: underline;
-    font-size: 30px;
+    font-size: 20px;
+}
+p{
+    font-size: 15px;
 }
 
 .weatherInfo{
@@ -91,31 +94,37 @@ body{
 
 .div-left{
     background-color: rgb(100, 151, 153);
-    display: inline-block;
+    display: block;
     width: 75%;
+    height: 150px;
 }
 
 
-.hotelInfo{
+.SearchHotelResult{
     background-color: rgb(165, 151, 153);
-    display: inline-block;
     width: 100%;
     padding: 15px;
 }
 
 /* hotel address */
 #address {
-    float: left;
+    display:inline;
     font-size: 25px;
-    margin: 35px;
+    word-wrap: normal;
 }
 
 /* hotel images */
-#hotelReturn img{
-    float: left;
+.SearchHotelResult img{
+    float:left;
+    display:inline;
+    align-items: left;
+    margin: 3px 20px 3px 3px;
 }
-
 
 .searchInput {
     width: 350px;
+}
+
+dt {
+    margin:15px;
 }
