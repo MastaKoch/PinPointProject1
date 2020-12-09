@@ -1,5 +1,5 @@
-var APIKey = "f60be35f3eda0b69e1466b12ddac604e"
-var citySearch = document.getElementById("cityName");
+var weatherAPIKey = "f60be35f3eda0b69e1466b12ddac604e"
+// var citySearch = document.getElementById("cityName");
 
 
 // Function to show the tabs when selected
@@ -28,10 +28,16 @@ function openTab(showTab, tabName) {
 $("#searchBtn").on("click", function(event){
   event.preventDefault();
 
+  // hide modal on search click
   $(".modal").hide();
 
   // takes value from input id #cityName 
   var search=$("#cityName").val().trim();
+
+  var getInput = $(this).siblings("input").val();
+  var cityStorageArr = [];
+  cityStorageArr.push(getInput);
+  localStorage.setItem("searchStore", JSON.stringify(cityStorageArr));
   console.log(search);
 
   // sets citySearch variable equal to the input value
@@ -39,9 +45,25 @@ $("#searchBtn").on("click", function(event){
   console.log(citySearch);
 
 // run functions below vvv
-  weatherPresent();
+  weatherPresent(search);
+  callCity();
 });
 // end weather onClick function
+
+// start callCity function to call the stored city
+function callCity(){
+   var cityRecall = JSON.parse(localStorage.getItem("searchStore"));
+   var recallReturn = $("<button class='btn btn-success' style='width: 200px'>").text(cityRecall);
+   var recallSearch = $("<a>");
+   recallSearch.append(recallReturn);
+   $("#searchRecall").append(recallSearch);
+}
+
+// recall city on click
+$("#searchRecall").on("click", ".btn", function(event){
+  event.preventDefault();
+  weatherPresent($(this).text());
+});
 
 
 // onClick function for the Hotel search button. 
@@ -82,7 +104,7 @@ function GetDestinationID(searchHotel, CheckinDate, CheckOutDate, NumberOfTravel
     "url": "https://hotels4.p.rapidapi.com/locations/search?query="+searchHotel+"&locale=en_US",
     "method": "GET",
     "headers": {
-      "x-rapidapi-key": "8b8ddf2d71mshf03a9aae2c1ec77p127802jsn64b1b332d9eb",
+      "x-rapidapi-key": "de5dfa254emsh75dd89a45134becp1c1f91jsn3f038a2bfd7e",
       "x-rapidapi-host": "hotels4.p.rapidapi.com"
     }
   };
@@ -110,7 +132,7 @@ function getHotelList(CityId, checkIn, checkOut, adults1, pageNumber, pageSize) 
     // "url":"https://hotels4.p.rapidapi.com/properties/list?destinationId=1506246&pageNumber=1&checkIn=2020-01-08&checkOut=2020-01-15&pageSize=25&adults1=1&currency=USD&locale=en_US&sortOrder=PRICE",
     "method": "GET",
     "headers": {
-    "x-rapidapi-key": "8b8ddf2d71mshf03a9aae2c1ec77p127802jsn64b1b332d9eb",
+    "x-rapidapi-key": "de5dfa254emsh75dd89a45134becp1c1f91jsn3f038a2bfd7e",
     "x-rapidapi-host": "hotels4.p.rapidapi.com"
     }
 
@@ -137,10 +159,20 @@ function getHotelList(CityId, checkIn, checkOut, adults1, pageNumber, pageSize) 
       var hotelRegion = response.data.body.searchResults.results[i].address.region;
       var hotelPostalCode = response.data.body.searchResults.results[i].address.postalCode;
       var pricePerNight = response.data.body.searchResults.results[i].ratePlan.price.current;
-      // var totalPrice = pricePerNight * (checkOut-checkIn);
+      var checkInDay = new Date(checkIn);
+      var checkOutDay = new Date(checkOut);
+      const dateDifference = checkOutDay.getTime() - checkInDay.getTime();
+      var days = dateDifference/(1000 * 3600 * 24);
+      if(days == 1){
+        var totalPrice = pricePerNight;
+      } 
+      else{
+        var totalPrice = response.data.body.searchResults.results[i].ratePlan.price.totalPricePerStay;
+      }
+
       var thumbnailUrl = response.data.body.searchResults.results[i].thumbnailUrl;
       hotelList += "<dt><img src='" + thumbnailUrl+"'><div class='div-left'><h3>Hotel Name: "+hotelName+"</h3>";
-      hotelList += "<span> Price per Night:  "+pricePerNight+"<br> Total Price: TBD <br>";
+      hotelList += "<span> Price per Night:  "+pricePerNight+"<br> Total Price: "+totalPrice+" <br>";
       hotelList += "Address: <br>"+ hotelStreetAddress + "<br>" +hotelLocality+", "+hotelRegion+" "+hotelPostalCode+"</span></div></dt>";
     
     }
@@ -151,10 +183,10 @@ function getHotelList(CityId, checkIn, checkOut, adults1, pageNumber, pageSize) 
 }
 // end getHotelList function
 
-function weatherPresent(){
+function weatherPresent(citySearch){
 
   const weatherSettings = {
-    "url": "https://api.openweathermap.org/data/2.5/weather?q=" +citySearch+ "&units=imperial&appid=" + APIKey,
+    "url": "https://api.openweathermap.org/data/2.5/weather?q=" +citySearch+ "&units=imperial&appid=" + weatherAPIKey,
     "method": "GET"
   }
     

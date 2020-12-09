@@ -10,6 +10,14 @@
     height: 15rem;
 }
 
+#weather button{
+    width:200px;
+}
+
+#searchRecall button{
+    margin-left:5px;
+}
+
 .weatherIcon{
     width: 5rem;
     height: 5rem;
@@ -27,12 +35,12 @@
     height: fit-content;
   }
   
-  .modal-content {
+.modal-content {
     margin: 15% auto;
     padding: 20px;
     width: 80%;
     background-color: rgb(131, 131, 131);
-  }
+}
 
 #searchBox{
     background-color: rgb(90, 151, 93);
@@ -40,6 +48,7 @@
     box-shadow: -15px 9px 17px -4px #043bd4;
     width: 30%;
 }
+
 .cityHeader{
     color: red;
 }
@@ -59,6 +68,7 @@ h3{
     text-decoration: underline;
     font-size: 20px;
 }
+
 p{
     font-size: 15px;
 }
