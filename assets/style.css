@@ -18,17 +18,27 @@
     width: 10rem;
     height: 5rem;
 }
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 35%;
+    top: 35%;
+    height: fit-content;
+  }
+  
+  .modal-content {
+    margin: 15% auto;
+    padding: 20px;
+    width: 80%;
+    background-color: rgb(131, 131, 131);
+  }
 
-
-.searchBox{
-    display: block;
+#searchBox{
     background-color: rgb(90, 151, 93);
     color: blue;
-    -webkit-box-shadow: -15px 9px 17px -4px #043bd4; 
     box-shadow: -15px 9px 17px -4px #043bd4;
-    margin: auto;
     width: 30%;
-    padding: 15px;
 }
 .cityHeader{
     color: red;

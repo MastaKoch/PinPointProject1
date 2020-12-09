@@ -28,6 +28,8 @@ function openTab(showTab, tabName) {
 $("#searchBtn").on("click", function(event){
   event.preventDefault();
 
+  $(".modal").hide();
+
   // takes value from input id #cityName 
   var search=$("#cityName").val().trim();
   console.log(search);

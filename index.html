@@ -26,9 +26,8 @@
 
     </div>
 
-    <!-- Tab group for weather -->
-    <div class="content" id="weather">
-      <div class="searchBox">
+    <div id="searchBox" class="modal">
+      <div class="modal-content">
         <h4>City Name:</h4>
         <div class="input-group">
           <input id="cityName" type="text" class="form-control">
@@ -37,10 +36,16 @@
           </div>
         </div>
       </div>
+    </div>
+    
+    <!-- Tab group for weather -->
+    <div class="content" id="weather">
+      <button onclick="document.getElementById('searchBox').style.display='block'" class="btn btn-secondary">Search New City</button>
       <p class="cityHeader"><a id="weatherCity"></a></p>
       <p class="weatherInfo"><a id="weatherReturn"></a></p>
     </div> 
 
+    
     <!-- Tab group for Hotel -->
     
     <div class="content" id="hotel">
