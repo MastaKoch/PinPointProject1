@@ -256,7 +256,7 @@ function fiveDayForecast(citySearch){
     "url": "https://api.openweathermap.org/data/2.5/forecast?q="+ citySearch + "&units=imperial&appid="+ weatherAPIKey,
     "method": "GET"
   }
-  $("#weatherForecastReturn").prepend("<h2 style='color:Black' margin-left='10px'>5-Day Forecast</h2>");
+  $("#weatherForecastReturn").html("<h2 style='color:Black' margin-left='10px'>5-Day Forecast</h2><div id='forecastCards'></div>");
 
   $.ajax(weatherSettings).then(function(response){
     console.log(response);
