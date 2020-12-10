@@ -88,8 +88,12 @@ $("#searchHotelBtn").on("click", function(event){
    var NumberOfTravelers = $("#NumberOfTravelers").val().trim();
    console.log(NumberOfTravelers);
 
+   localStorage.setItem("CheckinDate", CheckinDate);
+   localStorage.setItem("CheckOutDate", CheckOutDate);
+   localStorage.setItem("NumberOfTravelers",NumberOfTravelers);
+
 // run functions below 
-  GetDestinationID(searchHotel, CheckinDate, CheckOutDate, NumberOfTravelers );
+  GetDestinationID(searchHotel, CheckinDate, CheckOutDate, NumberOfTravelers);
   
 });
 // end Hotel onClick function
@@ -163,7 +167,40 @@ function getHotelList(CityId, checkIn, checkOut, adults1, pageNumber, pageSize) 
     
     }
 
+    var numberOfHotel =  response.data.body.searchResults.totalCount;
+    var numberOfPages = Math.ceil (numberOfHotel / pageSize);
+    console.log(numberOfPages);
+    var pageNav = "<ul class='pagination'>";
+    pageNav += "<li><a href ='#' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>"
+    for(i = 1 ; i<numberOfPages; i++){
+       
+      if(i == pageNumber){
+        pageNav +=  "<li><a href='#'>"+i+"</a></li>";
+      }else {
+
+        pageNav +=  "<li><a href='#'>"+i+"</a></li>";
+      }
+      if(i == 11){
+        break;
+      }
+    }
+    pageNav +=  "<li><a href ='#' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li></ul>"
     $("#SearchHotelResult").html(hotelList);
+    $("#pages").html(pageNav);
+    $('ul.pagination li a').on('click',function(e){
+      e.preventDefault();
+      var tag = $(this);
+      //alert(" click on "+tag.text());
+
+      var destinationId = response.data.body.query.destination.id;
+      var CheckinDate = localStorage.getItem("CheckinDate");
+      var CheckOutDate = localStorage.getItem("CheckOutDate");
+      var NumberOfTravelers = localStorage.getItem("NumberOfTravelers");
+
+      getHotelList(destinationId, CheckinDate, CheckOutDate, NumberOfTravelers, tag, pageSize);
+      console.log("testtest");
+
+  });
   });
 
 }
