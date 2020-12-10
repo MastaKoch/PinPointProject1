@@ -155,19 +155,9 @@ function getHotelList(CityId, checkIn, checkOut, adults1, pageNumber, pageSize) 
       var hotelRegion = response.data.body.searchResults.results[i].address.region;
       var hotelPostalCode = response.data.body.searchResults.results[i].address.postalCode;
       var pricePerNight = response.data.body.searchResults.results[i].ratePlan.price.current;
-      var checkInDay = new Date(checkIn);
-      var checkOutDay = new Date(checkOut);
-      const dateDifference = checkOutDay.getTime() - checkInDay.getTime();
-      var days = dateDifference/(1000 * 3600 * 24);
-      if(days == 1){
-        var totalPrice = pricePerNight;
-      } 
-      else{
-        var totalPrice = response.data.body.searchResults.results[i].ratePlan.price.totalPricePerStay;
-      }
-
+      var totalPrice = response.data.body.searchResults.results[i].ratePlan.price.totalPricePerStay;
       var thumbnailUrl = response.data.body.searchResults.results[i].thumbnailUrl;
-      hotelList += "<dt><img src='" + thumbnailUrl+"'><div class='div-left'><h3>Hotel Name: "+hotelName+"</h3>";
+      hotelList += "<dt><img src='" + thumbnailUrl+"'><div class='div-left'><h3>"+hotelName+"</h3>";
       hotelList += "<span> Price per Night:  "+pricePerNight+"<br> Total Price: "+totalPrice+" <br>";
       hotelList += "Address: <br>"+ hotelStreetAddress + "<br>" +hotelLocality+", "+hotelRegion+" "+hotelPostalCode+"</span></div></dt>";
     
@@ -244,3 +234,4 @@ function fiveDayForecast(citySearch){
 
 
 }
+
