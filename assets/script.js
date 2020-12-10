@@ -197,8 +197,13 @@ function getHotelList(CityId, checkIn, checkOut, adults1, pageNumber, pageSize) 
       var CheckOutDate = localStorage.getItem("CheckOutDate");
       var NumberOfTravelers = localStorage.getItem("NumberOfTravelers");
 
-      getHotelList(destinationId, CheckinDate, CheckOutDate, NumberOfTravelers, tag, pageSize);
-      console.log("testtest");
+      console.log('this is the destination id :'+ destinationId);
+      console.log('this is the checkin date: ' + CheckinDate);
+      console.log('this is the checkout date: ' + CheckOutDate);
+      console.log('this is the NumberOfTravelers of travelers: ' + NumberOfTravelers);
+      console.log('this is the number of the page: ' + tag.text() );
+      getHotelList(destinationId, CheckinDate, CheckOutDate, NumberOfTravelers, tag.text(), pageSize);
+      
 
   });
   });
