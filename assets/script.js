@@ -47,6 +47,7 @@ $("#searchBtn").on("click", function(event){
 // run functions below vvv
   weatherPresent(search);
   callCity();
+  fiveDayForecast(search);
 });
 // end weather onClick function
 
@@ -195,6 +196,8 @@ function weatherPresent(citySearch){
 
     var temperature=response.main.temp;
     var humidity=response.main.humidity;
+    var hiTemp=response.main.temp_max;
+    var loTemp = response.main.temp_min;
 
     // Write City Name to weather header
     $("#weatherCity").html("<h2>"+citySearch+"</h2>");
@@ -203,8 +206,46 @@ function weatherPresent(citySearch){
     var weatherData = "<ul>"
     weatherData += "<p>Temperature: "+temperature+" F</p>";
     weatherData += "<p>Humidity: "+humidity+" %</p>";
+    weatherData += "<p>High For the Day: "+hiTemp+"F</p>"
+    weatherData += "<p>Low For the Day: "+loTemp+"F</p>";
     $("#weatherReturn").html(weatherData);
+    console.log(citySearch);
   
   });
 }
 //end WeatherPresent function
+
+// five day forecast function here vv
+function fiveDayForecast(citySearch){
+
+  const fiveDayAPI= "https://api.openweathermap.org/data/2.5/forecast?q="+citySearch + "&units=imperial&appid="+ weatherAPIKey;
+
+  const weatherSettings= {
+    url: fiveDayAPI,
+    method: "GET",
+  };
+
+  $.ajax(weatherSettings).then(function(response){
+    console.log(response);
+  for(let i=0; i<response.list.length; i ++){
+    if(i%8===0){
+      console.log(response.list[i]);
+      var sum=0;
+      for(let j=i; j<i + 8; j++ ){
+        sum += response.list[j].main.temp;
+      }
+      var avg= Math.floor(sum / 8);
+      console.log(avg);
+      $("#weatherReturn").append("<p> Temperature: "+ avg + "F"+"</p>")
+    }
+      
+    ;
+
+  }
+
+
+  })
+  
+
+
+}
