@@ -58,6 +58,10 @@ Built Using:
  - JavaScript
  - HTML
  - CSS
+ - Bootstrap 
+ - Google Fonts
+ - OpenWeatherAPI (https://openweathermap.org/api)
+ - Hotels API by API Dojo (https://rapids pi.com/apidojo/api/hotels4/endpoints)
  
 ## Features
 Input for city search to view weather forecast and hotel availability.
@@ -111,3 +115,8 @@ function weatherPresent(citySearch){
 }
 //end WeatherPresent function
 ```````````````````````
+
+## Contributors
+ - Carla St. Juste
+ - Cam Lundy
+ - Alex Koch
