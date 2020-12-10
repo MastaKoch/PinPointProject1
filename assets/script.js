@@ -24,48 +24,9 @@ function openTab(showTab, tabName) {
 // end openTab function
 
 
-// onClick function for the weather search button. 
-$("#searchBtn").on("click", function(event){
-  event.preventDefault();
 
-  // hide modal on search click
-  $(".modal").hide();
 
-  // takes value from input id #cityName 
-  var search=$("#cityName").val().trim();
-
-  var getInput = $(this).siblings("input").val();
-  var cityStorageArr = [];
-  cityStorageArr.push(getInput);
-  localStorage.setItem("searchStore", JSON.stringify(cityStorageArr));
-  console.log(search);
-
-  // sets citySearch variable equal to the input value
-  citySearch= search;
-  console.log(citySearch);
-
-// run functions below vvv
-  weatherPresent(search);
-  callCity();
-  fiveDayForecast(search);
-});
-// end weather onClick function
-
-// start callCity function to call the stored city
-function callCity(){
-   var cityRecall = JSON.parse(localStorage.getItem("searchStore"));
-   var recallReturn = $("<button class='btn btn-success' style='width: 200px'>").text(cityRecall);
-   var recallSearch = $("<a>");
-   recallSearch.append(recallReturn);
-   $("#searchRecall").append(recallSearch);
-}
-
-// recall city on click
-$("#searchRecall").on("click", ".btn", function(event){
-  event.preventDefault();
-  weatherPresent($(this).text());
-});
-
+//-----------------------------------------------------HOTEL TAB FUNCTIONS-----------------------------------------------------
 
 // onClick function for the Hotel search button. 
 $("#searchHotelBtn").on("click", function(event){
@@ -100,7 +61,7 @@ $("#searchHotelBtn").on("click", function(event){
 
 
 
-// start GetDestinationID function
+// start GetDestinationID function for hotel tab
 function GetDestinationID(searchHotel, CheckinDate, CheckOutDate, NumberOfTravelers){
 
   const settings = {
@@ -127,7 +88,7 @@ function GetDestinationID(searchHotel, CheckinDate, CheckOutDate, NumberOfTravel
 }
 // end GetDestinationID function
 
-// start getHotelList function
+// start getHotelList function for hotel tab
 function getHotelList(CityId, checkIn, checkOut, adults1, pageNumber, pageSize) {
 
   const settings = {
@@ -211,6 +172,53 @@ function getHotelList(CityId, checkIn, checkOut, adults1, pageNumber, pageSize) 
 }
 // end getHotelList function
 
+//-----------------------------------------------------WEATHER TAB FUNCTIONS-----------------------------------------------------
+
+// onClick function for the weather search button. 
+$("#searchBtn").on("click", function(event){
+  event.preventDefault();
+
+  // hide modal on search click
+  $(".modal").hide();
+
+  // takes value from input id #cityName 
+  var search=$("#cityName").val().trim();
+
+  var getInput = $(this).siblings("input").val();
+  // var cityStorageArr = JSON.parse(localStorage.getItem("searchStore")) || [];
+  var cityStorageArr = [];
+  cityStorageArr.push(getInput);
+  localStorage.setItem("searchStore", JSON.stringify(cityStorageArr));
+  console.log(search);
+
+  // sets citySearch variable equal to the input value
+  citySearch = search;
+  console.log(citySearch);
+
+// run functions below vvv
+  weatherPresent(search);
+  callCity();
+  fiveDayForecast(search);
+});
+// end weather onClick function
+
+// start callCity function to call the stored city
+function callCity(){
+  var cityRecall = JSON.parse(localStorage.getItem("searchStore"));
+  var recallReturn = $("<button class='btn btn-success' style='width: 200px'>").text(cityRecall);
+  var recallSearch = $("<a>");
+  recallSearch.append(recallReturn);
+  $("#searchRecall").prepend(recallSearch);
+}
+
+// recall city on click
+$("#searchRecall").on("click", ".btn", function(event){
+ event.preventDefault();
+ weatherPresent($(this).text());
+ fiveDayForecast($(this).text());
+});
+
+
 function weatherPresent(citySearch){
 
   const weatherSettings = {
@@ -221,10 +229,10 @@ function weatherPresent(citySearch){
   $.ajax(weatherSettings).done(function (response) {
     console.log(response);
 
-    var temperature=response.main.temp;
-    var humidity=response.main.humidity;
-    var hiTemp=response.main.temp_max;
-    var loTemp = response.main.temp_min;
+    var temperature=Math.floor(response.main.temp);
+    var humidity=Math.floor(response.main.humidity);
+    var hiTemp=Math.floor(response.main.temp_max);
+    var loTemp =Math.floor(response.main.temp_min);
 
     // Write City Name to weather header
     $("#weatherCity").html("<h2>"+citySearch+"</h2>");
@@ -237,7 +245,6 @@ function weatherPresent(citySearch){
     weatherData += "<p>Low For the Day: "+loTemp+"F</p>";
     $("#weatherReturn").html(weatherData);
     console.log(citySearch);
-  
   });
 }
 //end WeatherPresent function
@@ -245,35 +252,28 @@ function weatherPresent(citySearch){
 // five day forecast function here vv
 function fiveDayForecast(citySearch){
 
-  const fiveDayAPI= "https://api.openweathermap.org/data/2.5/forecast?q="+citySearch + "&units=imperial&appid="+ weatherAPIKey;
-
   const weatherSettings= {
-    url: fiveDayAPI,
-    method: "GET",
-  };
+    "url": "https://api.openweathermap.org/data/2.5/forecast?q="+citySearch + "&units=imperial&appid="+ weatherAPIKey,
+    "method": "GET"
+  }
 
   $.ajax(weatherSettings).then(function(response){
     console.log(response);
-  for(let i=0; i<response.list.length; i ++){
-    if(i%8===0){
-      console.log(response.list[i]);
-      var sum=0;
-      for(let j=i; j<i + 8; j++ ){
-        sum += response.list[j].main.temp;
+    for(let i=0; i<response.list.length; i ++){
+      if(i%8===0){
+        console.log(response.list[i]);
+        var sum=0;
+
+        for(let j=i; j<i + 8; j++ ){
+          sum += response.list[j].main.temp;
+        }
+        var avg= Math.floor(sum / 8);
+        
+
+
+        $("#weatherReturn").append("<p> Temperature: "+ avg + "F"+"</p>")
       }
-      var avg= Math.floor(sum / 8);
-      console.log(avg);
-      $("#weatherReturn").append("<p> Temperature: "+ avg + "F"+"</p>")
     }
-      
-    ;
-
-  }
-
-
-  })
-  
-
-
+  });
 }
 
