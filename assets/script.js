@@ -123,7 +123,7 @@ function getHotelList(CityId, checkIn, checkOut, adults1, pageNumber, pageSize) 
       var totalPrice = response.data.body.searchResults.results[i].ratePlan.price.totalPricePerStay;
       var thumbnailUrl = response.data.body.searchResults.results[i].thumbnailUrl;
       hotelList += "<dt><img src='" + thumbnailUrl+"'><div class='div-left'><h3>"+hotelName+"</h3>";
-      hotelList += "<span> Price per Night:  "+pricePerNight+"<br> Total Price: "+totalPrice+" <br>";
+      hotelList += "<span class='hotelDataReturn'> Price per Night:  "+pricePerNight+"<br> Total Price: "+totalPrice+" <br>";
       hotelList += "Address: <br>"+ hotelStreetAddress + "<br>" +hotelLocality+", "+hotelRegion+" "+hotelPostalCode+"</span></div></dt>";
     
     }
@@ -256,6 +256,7 @@ function fiveDayForecast(citySearch){
     "url": "https://api.openweathermap.org/data/2.5/forecast?q="+citySearch + "&units=imperial&appid="+ weatherAPIKey,
     "method": "GET"
   }
+  $("#weatherForecastReturn").prepend("<h2 style='color:Black'>5-Day Forecast</h2>");
 
   $.ajax(weatherSettings).then(function(response){
     console.log(response);
@@ -266,12 +267,16 @@ function fiveDayForecast(citySearch){
 
         for(let j=i; j<i + 8; j++ ){
           sum += response.list[j].main.temp;
+          var forecastDate = moment(response.list[j].dt_txt).format("dddd, MMM DD");
+          var humidity = response.list[j].main.humidity;
         }
         var avg= Math.floor(sum / 8);
-        
+        console.log(forecastDate);
 
 
-        $("#weatherReturn").append("<p> Temperature: "+ avg + "F"+"</p>")
+
+        $("#forecastCards").append("<div class='card dayCard'><div class='card-body text-center'><h4>"+forecastDate+"</h4><p class='text-left'> Temperature: "+ avg + "F <br> Humidity: "+humidity+"%</p></div></div>");
+
       }
     }
   });

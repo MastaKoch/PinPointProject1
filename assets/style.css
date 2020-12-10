@@ -1,3 +1,5 @@
+/* ------------------SHARED STYLES------------------ */
+/* Header styling */
 .jumbotron{
     background-color: rgb(189, 65, 65);
     color: blue;
@@ -10,71 +12,16 @@
     height: 15rem;
 }
 
-#weather button{
-    width:200px;
-}
-
-#searchRecall button{
-    margin-left:5px;
-}
-
-.weatherIcon{
-    width: 5rem;
-    height: 5rem;
-}
-.hotelIcon{
-    width: 10rem;
-    height: 5rem;
-}
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 35%;
-    top: 35%;
-    height: fit-content;
-  }
-  
-.modal-content {
-    margin: 15% auto;
-    padding: 20px;
-    width: 80%;
-    background-color: rgb(131, 131, 131);
-}
-
-#searchBox{
-    background-color: rgb(90, 151, 93);
-    color: blue;
-    box-shadow: -15px 9px 17px -4px #043bd4;
-    width: 30%;
-}
-
-.cityHeader{
-    color: red;
-}
-
 /* header for page "PinPoint" */
 h1{
     font-size: 60px;
 }
 
-/* City name header inside of tabs */
+
+/* City name header inside of both tabs */
 h2{
     font-size: 40px;
-}
-
-/* Hotel names */
-h3{
-    text-decoration: underline;
-    font-size: 20px;
-}
-
-p{
-    font-size: 15px;
-}
-
-.weatherInfo{
-    color: blue;
+    color: red;
 }
 
 body{
@@ -85,12 +32,21 @@ body{
 .content {
     display: none;
     padding: 6px 12px;
-    /* border: 1px solid #ccc; */
     border-top: none;
     justify-content: center;  
     align-items: center;
     margin: auto;
     width: 79%; 
+}
+
+/* ---------Tab Styles--------- */
+.weatherIcon{
+    width: 5rem;
+    height: 5rem;
+}
+.hotelIcon{
+    width: 10rem;
+    height: 5rem;
 }
 
 .tabGroup button {
@@ -112,13 +68,87 @@ body{
     align-items: center;  
 }
 
+
+/* ------------------WEATHER TAB STYLES------------------ */
+
+#weather {
+    background-color:#fb9f87;
+
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 35%;
+    top: 35%;
+    height: fit-content;
+  }
+  
+.modal-content {
+    margin: 15% auto;
+    padding: 20px;
+    width: 80%;
+    background-color: rgb(131, 131, 131);
+}
+
+/* search box inside modal for weather tab */
+#searchBox{
+    background-color: rgb(90, 151, 93);
+    color: blue;
+    box-shadow: -15px 9px 17px -4px #043bd4;
+    width: 30%;
+}
+
+/* weather buttons for recalls */
+#weather button{
+    width:200px;
+}
+
+#searchRecall button{
+    margin-left:5px;
+}
+
+.weatherInfo{
+    color: blue;
+}
+
+/* weather forecast cards */
+#weather row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.dayCard {
+    margin: 10px;
+    background-color: rgb(0, 0, 255);
+    color: White;
+    width: 20%;
+}
+
+#forecastCards {
+    display: flex;
+    flex-direction: row;
+}
+
+
+/* ------------------HOTEL TAB STYLES------------------ */
+
+/* Hotel names */
+h3{
+    text-decoration: underline;
+    font-size: 20px;
+}
+
+.hotelDataReturn{
+    font-size: 15px;
+}
+
+
 .div-left{
     background-color: rgb(100, 151, 153);
     display: block;
     width: 75%;
     height: fit-content;
 }
-
 
 .SearchHotelResult{
     background-color: rgb(165, 151, 153);
@@ -141,10 +171,12 @@ body{
     margin-bottom: 20px;
 }
 
+/* hotel tab search boxes */
 .searchInput {
     width: 350px;
 }
 
+/* hotel tab data return */
 dt {
     margin:inherit;
 }
