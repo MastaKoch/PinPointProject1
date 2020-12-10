@@ -141,7 +141,7 @@ function getHotelList(CityId, checkIn, checkOut, adults1, pageNumber, pageSize) 
 
         pageNav +=  "<li><a href='#'>"+i+"</a></li>";
       }
-      if(i == 11){
+      if(i == 9){
         break;
       }
     }
@@ -253,10 +253,10 @@ function weatherPresent(citySearch){
 function fiveDayForecast(citySearch){
 
   const weatherSettings= {
-    "url": "https://api.openweathermap.org/data/2.5/forecast?q="+citySearch + "&units=imperial&appid="+ weatherAPIKey,
+    "url": "https://api.openweathermap.org/data/2.5/forecast?q="+ citySearch + "&units=imperial&appid="+ weatherAPIKey,
     "method": "GET"
   }
-  $("#weatherForecastReturn").prepend("<h2 style='color:Black'>5-Day Forecast</h2>");
+  $("#weatherForecastReturn").prepend("<h2 style='color:Black' margin-left='10px'>5-Day Forecast</h2>");
 
   $.ajax(weatherSettings).then(function(response){
     console.log(response);
@@ -281,4 +281,3 @@ function fiveDayForecast(citySearch){
     }
   });
 }
-

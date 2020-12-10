@@ -110,6 +110,7 @@ body{
 
 .weatherInfo{
     color: blue;
+    font-size: 25px;
 }
 
 /* weather forecast cards */
@@ -129,9 +130,12 @@ body{
     flex-direction: row;
 }
 
+#weatherForecastReturn{
+    margin: 15px;
+}
+
 
 /* ------------------HOTEL TAB STYLES------------------ */
-
 /* Hotel names */
 h3{
     text-decoration: underline;
@@ -183,4 +187,8 @@ dt {
 
 #hotel input {
     width: 350px;
+}
+
+#pages {
+    letter-spacing: 10px;
 }
