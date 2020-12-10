@@ -130,7 +130,6 @@ function getHotelList(CityId, checkIn, checkOut, adults1, pageNumber, pageSize) 
     "async": true,
     "crossDomain": true,
     "url": "https://hotels4.p.rapidapi.com/properties/list?destinationId="+CityId+"&pageNumber="+pageNumber+"&checkIn="+checkIn+"&checkOut="+checkOut+"&pageSize="+pageSize+"&adults1="+adults1+"&currency=USD&locale=en_US&sortOrder=PRICE",
-    // "url":"https://hotels4.p.rapidapi.com/properties/list?destinationId=1506246&pageNumber=1&checkIn=2020-01-08&checkOut=2020-01-15&pageSize=25&adults1=1&currency=USD&locale=en_US&sortOrder=PRICE",
     "method": "GET",
     "headers": {
     "x-rapidapi-key": "de5dfa254emsh75dd89a45134becp1c1f91jsn3f038a2bfd7e",
@@ -149,10 +148,6 @@ function getHotelList(CityId, checkIn, checkOut, adults1, pageNumber, pageSize) 
     var result = response.data.body.searchResults.results.length;
     var hotelList = "<ul>"
     for(i=0; i<pageSize; i++){
-      //var reviewRating = response.data.body.searchResults.results[i].guestReviews.rating;
-      //var reviewRaging = getRating(response.data.body.results[i]);
-      //var reviewScale = response.data.body.searchResults.results[i].guestReviews.scale;
-      //var reviewTotal = response.data.body.searchResults.results[i].guestReviews.total;
       console.log(i);
       var hotelName = response.data.body.searchResults.results[i].name;
       var hotelStreetAddress = response.data.body.searchResults.results[i].address.streetAddress;

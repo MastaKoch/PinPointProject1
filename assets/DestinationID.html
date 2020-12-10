@@ -3,15 +3,54 @@
 
 <head>
   <meta charset="utf-8">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
   <title>Hotel Search</title>
 </head>
 
 <body>
-<label for="site-search">Search Hotel:</label>
+<label for="hotel-search">Search Hotel:</label>
 <input type="search" id="hotel-search" name="q" aria-label="Search through site content">
 <button id="seachBtn" onclick="searchLocation()">Search</button>
 
-
+<ul tabindex="0"
+class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front"
+id="ui-id-1"
+style="left: 52.46px; top: 32px; width: 181px; display: none;"> 
+<li class="ui-menu-item"> 
+<div tabindex="-1"
+class="ui-menu-item-wrapper"
+id="ui-id-18"> 
+Test1 
+</div> 
+</li> 
+<li class="ui-menu-item"> 
+<div tabindex="-1"
+class="ui-menu-item-wrapper"
+id="ui-id-19"> 
+Test2
+</div> 
+</li> 
+<li class="ui-menu-item"> 
+<div tabindex="-1"
+class="ui-menu-item-wrapper"
+id="ui-id-20"> 
+Test3
+</div> 
+</li> 
+</ul> 
+<div class="ui-helper-hidden-accessible"
+role="status"
+aria-live="assertive"
+aria-relevant="additions"> 
+<div style="display: none;"> 
+3 results are available, use up and down arrow keys to navigate. 
+</div> 
+<div style="display: none;">Restaurant1</div> 
+<div style="display: none;">Restaurant2</div> 
+<div style="display: none;">Restaurant3</div> 
+</div> 
 
 <div class="city-suggestions"></div>
 <div class="landmark-suggestions"> </div>
@@ -22,6 +61,10 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
+$("hotel-search").autocomplete({
+    source:array ('test1', 'test2', 'test3')
+});
+
 
 function searchLocation(){
     // takes value from input  
