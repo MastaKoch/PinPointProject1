@@ -163,7 +163,7 @@ function getHotelList(CityId, checkIn, checkOut, adults1, pageNumber, pageSize) 
     
     }
 
-    $(".SearchHotelResult").html(hotelList);
+    $("#SearchHotelResult").html(hotelList);
   });
 
 }
